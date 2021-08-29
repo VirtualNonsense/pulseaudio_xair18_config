@@ -37,26 +37,30 @@ CH16=aux7
 echo INPUTS: Mic1 Mic2
 pacmd load-module module-remap-source\
  channels=1 remix=no channel_map=mono\
- source_name=mic1 source_properties=device.description=XAir-In1\
+ source_name=xair-in1 source_properties=device.description=XAir-In1\
  master=${MULTIIN} master_channel_map=${CH1}
 
 pacmd load-module module-remap-source\
  channels=1 remix=no channel_map=mono\
- source_name=mic2 source_properties=device.description=XAir-In2\
+ source_name=xair-in2 source_properties=device.description=XAir-In2\
  master=${MULTIIN} master_channel_map=${CH2}
 
 #Create virtual outputs to 'surround 4.0' sound card
 echo OUTPUTS: USB1-2 USB3-4
 pacmd load-module module-remap-sink\
  channels=2 remix=no channel_map=front-left,front-right\
- sink_name=usb12 sink_properties=device.description=XAir-Out1-2\
+ sink_name=xair-out12 sink_properties=device.description=XAir-Out1-2\
  master=${MULTIOUT} master_channel_map=${CH1},${CH2}
  
 pacmd load-module module-remap-sink\
  channels=2 remix=no channel_map=front-left,front-right\
- sink_name=usb34 sink_properties=device.description=XAir-Out3-4\
+ sink_name=xair-out34 sink_properties=device.description=XAir-Out3-4\
  master=${MULTIOUT} master_channel_map=${CH3},${CH4}
 echo "###########sinks#############"
 pactl list sinks short
 echo "##########sources############"
 pactl list sources short
+
+# Setting default devices
+pacmd set-default-source "xair-in1"
+pacmd set-default-sink "xair-out12"
