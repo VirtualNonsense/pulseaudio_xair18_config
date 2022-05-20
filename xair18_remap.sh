@@ -38,12 +38,12 @@ echo INPUTS: Mic1 Mic2
 pacmd load-module module-remap-source\
  channels=1 remix=no channel_map=mono\
  source_name=xair-in1 source_properties=device.description=XAir-In1\
- master=${MULTIIN} master_channel_map=${CH1}
+ master=${MULTIIN} master_channel_map=${CH7}
 
 pacmd load-module module-remap-source\
  channels=1 remix=no channel_map=mono\
  source_name=xair-in2 source_properties=device.description=XAir-In2\
- master=${MULTIIN} master_channel_map=${CH2}
+ master=${MULTIIN} master_channel_map=${CH8}
 
 #Create virtual outputs to 'surround 4.0' sound card
 echo OUTPUTS: USB1-2 USB3-4
